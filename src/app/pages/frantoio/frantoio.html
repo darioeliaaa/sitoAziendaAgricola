@@ -1,0 +1,65 @@
+<div class="frantoio-wrapper">
+
+  <header class="page-header">
+    <h1>Il Frantoio Pelaggi</h1>
+    <p>La tecnologia incontra la tradizione agricola calabrese.</p>
+  </header>
+
+  <section class="processo-lavorazione">
+    <h2>Come lavoriamo</h2>
+
+    <div class="timeline-container">
+      <!-- Cicliamo l'array dei processi -->
+      @for (step of processi; track step.titolo) {
+        <div class="step-card">
+          <h3>{{ step.titolo }}</h3>
+          <p>{{ step.descrizione }}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="galleria-lavori">
+    <h2>I Nostri Lavori</h2>
+
+    <div class="carousel-container">
+
+      <!-- Bottone Indietro -->
+      <button class="carousel-btn prev" (click)="prevFoto()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <!-- Pista scorrevole -->
+      <div class="carousel-viewport">
+        <!-- Spostiamo la pista in base all'indice corrente -->
+        <div class="carousel-track" [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'">
+
+          @for (foto of galleria; track foto; let i = $index) {
+            <div class="carousel-slide">
+              <img [src]="foto" alt="Lavorazione frantoio">
+            </div>
+          }
+
+        </div>
+      </div>
+
+      <!-- Bottone Avanti -->
+      <button class="carousel-btn next" (click)="nextFoto()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+    </div>
+
+    <!-- Pallini indicatori (Dots) -->
+    <div class="carousel-dots">
+      @for (foto of galleria; track foto; let i = $index) {
+        <span
+          class="dot"
+          [class.active]="currentIndex === i"
+          (click)="goToFoto(i)">
+        </span>
+      }
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,36 @@
+.chi-siamo-wrapper {
+  padding: 8rem 2rem; max-width: 1100px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 5rem;
+}
+
+.testo-storia h1 { font-size: 4rem; color: var(--olive-dark); margin-bottom: 0.5rem; }
+.testo-storia h2 { font-size: 1.5rem; color: var(--gold-accent); margin-bottom: 2.5rem; font-style: italic; }
+
+/* Capolettera in stile libro d'epoca per il primo paragrafo */
+.testo-storia p:first-of-type::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--gold-accent);
+  float: left;
+  line-height: 0.8;
+  margin-right: 12px;
+  margin-top: 4px;
+}
+
+.testo-storia p { color: var(--olive-dark); margin-bottom: 1.5rem; text-align: justify; }
+
+.immagine-storia { position: relative; z-index: 1; margin-top: 2rem; }
+
+/* Cornice sfalsata (Offset) che dà un dettaglio pazzesco */
+.immagine-storia::before {
+  content: ''; position: absolute; top: -20px; left: -20px;
+  width: 100%; height: 100%; border: 2px solid var(--gold-accent);
+  z-index: -1;
+}
+
+.immagine-storia img { width: 100%; display: block; }
+
+@media (min-width: 768px) {
+  .chi-siamo-wrapper { flex-direction: row; align-items: center; gap: 8rem; }
+  .testo-storia, .immagine-storia { flex: 1; }
+}

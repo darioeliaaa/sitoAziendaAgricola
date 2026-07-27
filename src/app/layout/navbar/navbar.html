@@ -1,0 +1,25 @@
+<header class="navbar">
+  <div class="navbar-container">
+
+    <!-- Logo -->
+    <a routerLink="/" class="logo" (click)="closeMenu()">
+      Agricola <span>Pelaggi</span>
+    </a>
+
+    <!-- Hamburger Button (Visibile solo da Mobile) -->
+    <button class="hamburger-btn" (click)="toggleMenu()" aria-label="Menu">
+      <span class="bar" [ngClass]="{'open': isMenuOpen}"></span>
+      <span class="bar" [ngClass]="{'open': isMenuOpen}"></span>
+      <span class="bar" [ngClass]="{'open': isMenuOpen}"></span>
+    </button>
+
+    <!-- Link di Navigazione -->
+    <nav class="nav-links" [ngClass]="{'active': isMenuOpen}">
+      <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
+      <a routerLink="/frantoio" routerLinkActive="active-link" (click)="closeMenu()">Frantoio</a>
+      <a routerLink="/chi-siamo" routerLinkActive="active-link" (click)="closeMenu()">Chi Siamo</a>
+      <a routerLink="/contatti" routerLinkActive="active-link" (click)="closeMenu()">Contatti</a>
+    </nav>
+
+  </div>
+</header>

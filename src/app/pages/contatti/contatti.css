@@ -1,0 +1,45 @@
+.contatti-wrapper { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 5rem; }
+
+.info-contatti h1 { font-size: 3.5rem; color: var(--olive-dark); margin-bottom: 1rem; }
+.info-contatti p { color: var(--olive-light); font-size: 1.1rem; }
+
+.info-contatti ul { list-style: none; padding: 0; margin: 3rem 0; color: var(--olive-dark); }
+.info-contatti li {
+  margin-bottom: 1.5rem; font-size: 1.1rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(194, 168, 120, 0.3);
+}
+
+.info-contatti li strong { font-family: 'Playfair Display', serif; color: var(--gold-accent); font-size: 1.3rem; display: block; margin-bottom: 5px; }
+
+.mappa-placeholder {
+  background-color: var(--cream-darker); color: var(--olive-light); padding: 4rem 2rem;
+  text-align: center; border: 1px dashed var(--gold-accent); font-family: 'Playfair Display', serif; font-style: italic;
+}
+
+.form-container { background: var(--white); padding: 3.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
+
+.form-group { margin-bottom: 2.5rem; }
+
+.form-group label {
+  display: block; margin-bottom: 0.8rem; font-weight: 600; color: var(--olive-dark);
+  font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
+}
+
+/* Stile Input Editoriale (solo linea sotto) */
+.form-group input, .form-group textarea {
+  width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid rgba(44, 57, 47, 0.2);
+  background-color: transparent; font-family: 'Inter', sans-serif; font-size: 1rem;
+  color: var(--olive-dark); transition: var(--transition); outline: none;
+}
+
+.form-group input:focus, .form-group textarea:focus { border-bottom: 2px solid var(--gold-accent); }
+
+button[type="submit"] {
+  width: 100%; padding: 18px 32px; background-color: var(--olive-dark); color: var(--white);
+  font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+  font-size: 0.9rem; border: none; cursor: pointer; transition: var(--transition); margin-top: 1rem;
+}
+
+button[type="submit"]:hover:not(:disabled) { background-color: var(--gold-accent); }
+button[type="submit"]:disabled { background-color: var(--cream-darker); color: var(--olive-light); cursor: not-allowed; }
+
+@media (min-width: 768px) { .contatti-wrapper { flex-direction: row; align-items: flex-start; gap: 6rem; } .info-contatti, .form-container { flex: 1; } }

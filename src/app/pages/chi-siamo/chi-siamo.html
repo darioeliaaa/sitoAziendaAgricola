@@ -1,0 +1,15 @@
+<div class="chi-siamo-wrapper">
+  <div class="testo-storia">
+    <h1>{{ titolo }}</h1>
+    <h2>{{ sottotitolo }}</h2>
+
+    @for (paragrafo of storia; track paragrafo) {
+      <p>{{ paragrafo }}</p>
+    }
+  </div>
+
+  <div class="immagine-storia">
+    <!-- Placeholder per una foto storica o della famiglia -->
+    <img src='/public/fotoFrantoio.jpeg' alt="Famiglia Pelaggi">
+  </div>
+</div>

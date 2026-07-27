@@ -1,0 +1,42 @@
+<div class="contatti-wrapper">
+
+  <div class="info-contatti">
+    <h1>Contattaci</h1>
+    <p>Vieni a trovarci a Strongoli o scrivici per informazioni sul nostro olio.</p>
+
+    <ul>
+      <li><strong>Indirizzo:</strong> Contrada Fittizia, Strongoli (KR)</li>
+      <li><strong>Telefono:</strong> +39 000 0000000</li>
+      <li><strong>Email:</strong> info&#64;agricolapelaggi.it</li>
+    </ul>
+
+    <!-- Placeholder per la mappa di Google -->
+    <div class="mappa-placeholder">
+      [Qui andrà la mappa di Google Maps]
+    </div>
+  </div>
+
+  <div class="form-container">
+    <form [formGroup]="contattoForm" (ngSubmit)="inviaMessaggio()">
+
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" formControlName="nome" placeholder="Il tuo nome">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="La tua email">
+      </div>
+
+      <div class="form-group">
+        <label for="messaggio">Messaggio</label>
+        <textarea id="messaggio" formControlName="messaggio" rows="5" placeholder="Cosa vuoi chiederci?"></textarea>
+      </div>
+
+      <button type="submit" [disabled]="contattoForm.invalid">Invia Messaggio</button>
+
+    </form>
+  </div>
+
+</div>

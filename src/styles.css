@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Palette Premium confermata */
+  --olive-dark: #2C392F;
+  --olive-light: #5A6B5D;
+  --gold-accent: #C2A878;
+  --cream-bg: #FDFCF8;
+  --cream-darker: #F4F1E8;  /* Nuovo: per riempire i vuoti e dare stacco */
+  --white: #FFFFFF;
+
+  --radius-sm: 2px; /* Ancora più squadrato, molto editoriale */
+  --transition: all 0.4s ease;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--cream-bg);
+  color: var(--olive-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+app-root { display: flex; flex-direction: column; min-height: 100vh; }
+app-home, app-frantoio, app-chi-siamo, app-contatti { flex: 1; display: flex; flex-direction: column; }
+
+/* Tipografia Ricca */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif; /* IL SEGRETO DELL'ELEGANZA */
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.8;
+  font-weight: 300;
+  font-size: 1.05rem;
+}
