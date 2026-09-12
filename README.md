@@ -1,59 +1,137 @@
-# SitoPelaggi
+# 🫒 Azienda Agricola Pelaggi
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+Sito vetrina per un'azienda agricola calabrese con frantoio di proprietà, a
+Strongoli — realizzato come **case study personale** per mettere alla prova
+server-side rendering e SEO tecnica su un caso concreto (non è un incarico
+commissionato da un cliente reale).
 
-## Development server
+---
 
-To start a local development server, run:
+## Indice
 
-```bash
-ng serve
+1. [Funzionalità](#funzionalità)
+2. [Perché il Server-Side Rendering](#perché-il-server-side-rendering)
+3. [Tech Stack](#tech-stack)
+4. [Struttura del Progetto](#struttura-del-progetto)
+5. [Installazione e Avvio](#installazione-e-avvio)
+6. [Build e Deploy](#build-e-deploy)
+7. [Autore](#autore)
+
+---
+
+## Funzionalità
+
+| Pagina | Descrizione |
+|--------|-------------|
+| **Home** | Hero con l'olio come protagonista, punti di forza dell'azienda (frantoio di proprietà, molitura a freddo, prodotto non miscelato), sezione "Dalla Terra alla Tavola" |
+| **Il Frantoio** | Racconto del processo produttivo — dalla raccolta alla molitura, tecnologia e tradizione a confronto |
+| **Chi Siamo** | Storia dell'azienda e del territorio |
+| **Contatti** | Recapiti e form di contatto |
+
+Layout condiviso (navbar + footer) su tutte le pagine, completamente
+responsivo, con un'attenzione particolare a tempi di caricamento e resa su
+mobile — è un sito vetrina, deve aprirsi subito e leggersi bene ovunque.
+
+---
+
+## Perché il Server-Side Rendering
+
+Un sito vetrina vive o muore sulla ricerca locale ("olio extravergine
+Strongoli") e su quanto velocemente si apre da telefono. Con l'SSR
+(Angular Universal su Express):
+
+- Le pagine arrivano al browser **già renderizzate**: primo contenuto
+  visibile immediato, non si aspetta che il JavaScript scarichi e giri
+- Google (e qualunque altro crawler) vede subito l'HTML finale, non una
+  pagina vuota in attesa di JavaScript — indicizzazione più affidabile
+- Meta tag, Open Graph e title impostati per la ricerca locale e per
+  l'anteprima quando il link viene condiviso in chat
+
+Su un sito con un'unica pagina davvero "di conversione" (la home) e poco
+altro, è la differenza tra esserci nei risultati di ricerca e non esserci.
+
+---
+
+## Tech Stack
+
+| Layer | Tecnologia | Versione |
+|-------|-----------|----------|
+| **Framework** | Angular (standalone components) | 21 |
+| **Rendering** | Angular Universal (SSR) | 21 |
+| **Server** | Express | 5 |
+| **Linguaggio** | TypeScript | — |
+| **Routing** | Angular Router | 21 |
+| **Reactive** | RxJS | 7.8 |
+
+---
+
+## Struttura del Progetto
+
+```
+sito-pelaggi/
+├── src/
+│   ├── app/
+│   │   ├── layout/
+│   │   │   ├── navbar/
+│   │   │   └── footer/
+│   │   ├── pages/
+│   │   │   ├── home/
+│   │   │   ├── frantoio/
+│   │   │   ├── chi-siamo/
+│   │   │   └── contatti/
+│   │   ├── app.routes.ts
+│   │   └── app.config.ts
+│   ├── main.ts              # bootstrap client
+│   ├── main.server.ts       # bootstrap server (SSR)
+│   └── server.ts            # entry point Express
+└── public/
+    └── fotoFrantoio.jpeg
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Installazione e Avvio
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prerequisiti
 
-```bash
-ng generate component component-name
-```
+- Node.js 18+
+- Angular CLI (`npm install -g @angular/cli`)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Sviluppo (client-side, hot reload)
 
 ```bash
-ng build
+npm install
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Apri [http://localhost:4200](http://localhost:4200). Non usa SSR in questa
+modalità — è il flusso di sviluppo normale con `ng serve`.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Con Server-Side Rendering (come in produzione)
 
 ```bash
-ng test
+npm run build
+npm run serve:ssr:sito-pelaggi
 ```
 
-## Running end-to-end tests
+Compila sia il bundle client sia quello server, poi avvia il server Express
+che serve le pagine già renderizzate.
 
-For end-to-end (e2e) testing, run:
+---
+
+## Build e Deploy
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Genera `dist/sito-pelaggi/` con due cartelle: `browser/` (assets statici) e
+`server/` (il bundle Node per l'SSR). Pronto per essere deployato su
+qualunque piattaforma che supporti Node.js (Vercel, Render, un VPS con
+`node dist/sito-pelaggi/server/server.mjs`).
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Autore
+
+**Dario Elia** — [github.com/darioeliaaa](https://github.com/darioeliaaa) · [darioelia.it](https://www.darioelia.it)
